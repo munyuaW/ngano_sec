@@ -2,20 +2,229 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="author" content="Munyua" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description"
+		content="Ngano Secondary and Senior School -- In Pursuit of Excellence">
+	<meta name="author" content="Munyua">
 	<title>HOME | Ngano Secondary</title>
-	<link rel="stylesheet" href="fontawesome-free-7.0.0-web/css/all.css" />
-	<script src="https://kit.fontawesome.com/79e14c08f4.js"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/swiper-bundle.min.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+		integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;700&display=swap"
+		rel="stylesheet">
 	<link rel="icon" type="image/x-icon" href="images/logo/logo_50x52.jpg">
-	<link rel="stylesheet" href="css/ngano.css" />
+	<link rel="stylesheet" href="css/ngano.css">
 </head>
 
-<body id="homePage">
-	<div class="header-ribbon">
+<body>
+	<!-- Mobile Ovrlay -->
+	<div class="mobile-overlay" id="mobileOverlay"></div>
+	<!-- The Header -->
+	<header class="header">
+		<div class="header-left">
+			<button class="mobileMenu-toggle" id="menuToggle">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+		</div>
+
+		<div class="header-right">
+			<h1 class="mobile-title">Ngano Secondary Senior School</h1>
+			<div class="quick-contact">
+				<span class="phone">
+					<i class="fa-solid fa-phone"></i>
+					+254 115 080 359
+				</span>
+				<span class="email">
+					<i class="fa-solid fa-envelope"></i>
+					nganosecondaryschool@gmail.com
+				</span>
+				<span class="location">
+					<i class="fa-solid fa-map-marker-alt"></i>
+					Ngano, Nyandarua County
+				</span>
+			</div>
+		</div>
+	</header>
+
+	<!-- Hero Section -->
+	<section class="hero" aria-label="Featured school highlights">
+		<div class="hero-slides" id="heroSlides">
+			<figure class="hero-slide is-active" data-slide="0">
+				<img src="images/hero-slides/classes-1.jpg" alt="Classes"
+					width="1600" height="900" loading="eager" />
+				<figcaption class="hero-caption">
+					<strong>2026</strong> — Welcome
+				</figcaption>
+			</figure>
+			<figure class="hero-slide" data-slide="1">
+				<img src="images/hero-slides/class-of-2023-prize-giving.jpeg"
+					alt="Students collaborating in a science lab" width="1600"
+					height="900" loading="lazy" />
+				<figcaption class="hero-caption">
+					<strong>2023-AGM</strong> — Celebrating 2023 class
+					achievements
+				</figcaption>
+			</figure>
+			<figure class="hero-slide" data-slide="2">
+				<img src="images/hero-slides/governor-Badilisha.jpg"
+					alt="Athletics team celebrating on the field" width="1600"
+					height="900" loading="lazy" />
+				<figcaption class="hero-caption">
+					<strong>H.E Governor Badilisha</strong> —
+				</figcaption>
+			</figure>
+			<figure class="hero-slide" data-slide="3">
+				<img src="images/hero-slides/tree-planting-day.jpeg"
+					alt="Students in a bright classroom" width="1600"
+					height="900" loading="lazy" />
+				<figcaption class="hero-caption">
+					<strong>Mazingira Day</strong> — Planting the future.
+				</figcaption>
+			</figure>
+		</div>
+		<div class="hero-dots" id="heroDots" role="tablist"
+			aria-label="Slide selection"></div>
+	</section>
+
+	<!-- The Sidebar -->
+	<aside class="sidebar" id="sideBar" aria-label="Site Navigation">
+		<div class="logo">
+			<img src="images/logo/logo.jpg" alt="">
+			<h1>Ngano Secondary and Senior School</h1>
+		</div>
+
+		<nav class="sidebar-nav">
+			<ul class="nav-list nav-list--primary">
+				<li>
+					<a href="#" class="nav-link nav-link-main active">
+						<i class="link-icon fa-solid fa-school"></i>
+						<span class="link-text">Home</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="link-icon fa-solid fa-circle-info"></i>
+						<span class="link-text">About</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="link-icon fas fa-university"></i>
+						<span class="link-text">Admissions</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="link-icon fa-solid fa-phone"></i>
+						<span class="link-text">Contact</span>
+					</a>
+				</li>
+			</ul>
+
+			<div class="nav-group">
+				<button type="button" class="nav-disclosure" id="deptToggle"
+					aria-expanded="false" aria-controls="deptPanel">
+					<span>
+						<i class="link-icon fa-solid fa-building-user"></i>
+						<span class="group-label">Departments</span>
+					</span>
+					<span class="nav-disclosure-icon" aria-hidden="true"></span>
+				</button>
+
+				<ul class="nav-list nav-list--nested" id="deptPanel" hidden>
+					<li>
+						<a href="#" class="nav-link">
+							<i class="link-icon fa-solid fa-graduation-cap"></i>
+							<span class="link-text">Academics</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link">
+							<i class="link-icon fa-solid fa-football"></i>
+							<span class="link-text">Games</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link">
+							<i class="link-icon fa-solid fa-users"></i>
+							<span class="link-text">Societies</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link">
+							<i class="link-icon fa-solid fa-guitar"></i>
+							<span class="link-text">Music</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="nav-group">
+				<button type="button" class="nav-disclosure" id="portalToggle"
+					aria-expanded="false" aria-controls="portalPanel">
+					<span>
+						<i class="link-icon fa-solid fa-user-lock"></i>
+						<span class="group-label">Portals</span>
+					</span>
+					<span class="nav-disclosure-icon" aria-hidden="true"></span>
+				</button>
+				<ul class="nav-list nav-list--nested" id="portalPanel" hidden>
+					<li><a href="#" class="nav-link">
+							<i
+								class="link-icon fa-solid fa-person-chalkboard"></i>
+							<span class="link-text">Staff</span>
+						</a></li>
+					<li><a href="#" class="nav-link">
+							<i
+								class="link-icon fa-solid fa-chalkboard-user"></i>
+							<span class="link-text">Students</span>
+						</a></li>
+					<li>
+						<a href="#" class="nav-link">
+							<i class="link-icon fa-solid fa-user-graduate"></i>
+							<span class="link-text">Alumni</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<ul class="nav-list nav-list--primary">
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="link-icon fas fa-project-diagram"></i>
+						<span class="link-text">Resources</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="fa-solid fa-photo-film"></i>
+						<span class="link-text">Gallery</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="link-icon fas fa-calendar-alt"></i>
+						<span class="link-text">Calendar</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link nav-link-main">
+						<i class="fa-solid fa-location-dot"></i>
+						<span class="link-text">Location</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="date"></div>
+	</aside>
+
+	<main class="main-content main"></main>
+	<footer class="footer"></footer>
+
+	<!-- <div class="header-ribbon">
 		<div class="logo">
 			<a href="index.html">
 				<img src="images/logo/logo_50x52.jpg" alt="logo" />
@@ -40,9 +249,9 @@
 				<span style="color: white;">Ngano, Nyandarua County</span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-	<header class="hero_section">
+	<!-- <header class="hero_section">
 		<button class="prevBtn"><i class="fa fa-chevron-left"></i></button>
 		<nav>
 			<h3 class="sch-name">Ngano Secondary School</h3>
@@ -58,9 +267,9 @@
 		<div class="hero_text-box"></div>
 		<div class="hero-dots"></div>
 		<button class="nextBtn"><i class="fa fa-chevron-right"></i></button>
-	</header>
+	</header> -->
 
-	<main>
+	<!-- <main>
 		<section class="introduction">
 			<article>
 				<div class="intro-grid stagger-top">
@@ -78,7 +287,7 @@
 						here students are shaped to be all-rounded and grounded
 						in character, discipline and academic excellence.
 					</p>
-					<div><img src="images/home-carousel/classes-1.jpg" alt="">
+					<div><img src="images/hero-slides/classes-1.jpg" alt="">
 					</div>
 					<p>
 						Since its establishment, Ngano Secondary School has
@@ -426,7 +635,6 @@
 						</p>
 					</div>
 				</div>
-				<!-- Pagination -->
 				<div class="swiper-pagination"></div>
 			</div>
 		</section>
@@ -439,9 +647,9 @@
 					US</a>
 			</div>
 		</section>
-	</main>
+	</main> -->
 
-	<footer>
+	<!-- <footer>
 		<div class="footer-sec row">
 			<article>
 				<h4>Important Links</h4>
@@ -505,29 +713,29 @@
 					target="_blank" class="author_link">munyua.io</a>
 				web.dev</p>
 		</div>
-	</footer>
+	</footer> -->
 
 	<!-- Copyright Section -->
-	<div class="copyright-sec">
+	<!-- <div class="copyright-sec">
 		<time id="clock" datetime="2025-08-20T14:30"></time>
 		<p>Copyright &copy; <time id="year" datetime="2025-08-20T14:30"></time>
 			Ngano Secondary</p>
-	</div>
+	</div> -->
 
 	<!-- Scroll to Top Button -->
-	<button id="scrollToTopBtn" class="scrollToTopBtn"><i
+	<!-- <button id="scrollToTopBtn" class="scrollToTopBtn"><i
 			class="fa-solid fa-angle-up"></i>
-	</button>
+	</button> -->
 
 	<!-- Fixed Socials -->
-	<div class="fixed-socials">
+	<!-- <div class="fixed-socials">
 		<a href="https://web.facebook.com/" target="_blank"><i
 				class="fa-brands fa-facebook"></i></a>
 		<a href="https://api.whatsapp.com/send?phone=0115080359"
 			target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 		<a href="https://www.x.com/" target="_blank"><i
 				class="fa-brands fa-x-twitter"></i></a>
-	</div>
+	</div> -->
 
 	<script src="https://unpkg.com/scrollreveal"></script>
 
