@@ -11,6 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".hero-slide");
   const dotsContainer = document.getElementById("heroDots");
 
+  // Hero slides show
+  generateDots();
+  const dots = document.querySelectorAll(".hero-dot");
+
+  let currentSlideIndex = 0;
+  let timerId = null;
+  const INTERVAL_MS = 5000;
+
+  startAutoplay();
+
   collapsibleMenuBtns.forEach((btn) =>
     btn.addEventListener("click", handleNavGroupClick),
   );
@@ -69,9 +79,42 @@ document.addEventListener("DOMContentLoaded", () => {
       dot.setAttribute("aria-label", `Show slide ${i + 1}`);
       dot.addEventListener("click", () => {
         goTo(i);
-        restartTimer();
+        resetAutoplay();
       });
+
+      dotsContainer.append(dot);
     });
+  }
+
+  function goTo(index) {
+    if (index < 0 || index >= slides.length) return;
+
+    slides[currentSlideIndex].classList.remove("is-active");
+    dots[currentSlideIndex].classList.remove("is-active");
+    dots[currentSlideIndex].setAttribute("aria-selected", "false");
+
+    currentSlideIndex = index;
+
+    slides[currentSlideIndex].classList.add("is-active");
+    dots[currentSlideIndex].classList.add("is-active");
+    dots[currentSlideIndex].setAttribute("aria-selected", "true");
+  }
+
+  function startAutoplay() {
+    timerId = setInterval(next, INTERVAL_MS);
+  }
+
+  function next() {
+    goTo((currentSlideIndex + 1) % slides.length);
+  }
+
+  function stopAutoplay() {
+    clearInterval(timerId);
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
   }
 });
 
