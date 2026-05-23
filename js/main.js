@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".date").textContent = new Date().toDateString();
-
   const menuToggle = document.getElementById("menuToggle");
   const sidebar = document.getElementById("sideBar");
   const mobileOverlay = document.getElementById("mobileOverlay");

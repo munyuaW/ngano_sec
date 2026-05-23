@@ -21,6 +21,7 @@
   --color-border: rgba(30, 144, 255, 0.22);
   --shadow-sm: 0 1px 3px rgba(13, 27, 58, 0.08);
   --shadow-md: 0 24px rgba(13, 27, 58, 0.1);
+  --highlight: rgba(21, 42, 82, 0.25);
 
   --header-height: 3rem;
   --sidebar-width: 16.5rem;
@@ -35,6 +36,10 @@
 
   --font-sans: "Source Sans 3", system-ui, -apple-system, sans-serif;
   --font-serif: "Source Serif 4", Georgia, serif;
+
+  --title-lg: 1.75rem;
+  --title-md: 1.5rem;
+  --title-sm: 1.2rem;
 }
 
 html {
@@ -412,11 +417,6 @@ body {
   background: rgba(21, 42, 82, 1);
 }
 
-.date {
-  color: var(--color-navy);
-  margin-top: 2rem;
-}
-
 /* Main */
 .main-content-wrapper {
   grid-area: content;
@@ -437,18 +437,18 @@ body {
 }
 
 .welcome-container {
-  background: var(--color-surface-alt);
+  background: var(--color-surface);
 }
 
-.page-title {
+.section-title {
   font-family: var(--font-serif);
   color: var(--color-navy);
-  font-size: 1.75rem;
+  font-size: var(--title-lg);
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.page-title::after {
+.section-title::after {
   content: "";
   display: block;
   width: 50px;
@@ -481,7 +481,7 @@ body {
   grid-template-columns: minmax(200px, 250px) 1fr;
   gap: 1.5rem;
 
-  background: var(--color-surface);
+  background: var(--color-surface-alt);
 }
 
 .statement-img {
@@ -503,7 +503,7 @@ body {
 
 .statement-body .role {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: var(--title-sm);
   color: var(--color-navy);
 }
 
@@ -523,6 +523,30 @@ body {
   font-size: 0.98rem;
   margin-bottom: 0.5rem;
   line-height: 1.6;
+}
+
+.deputy-statement {
+  grid-template-columns: 1fr minmax(200px, 250px);
+  gap: unset;
+}
+
+.deputy-statement .statement-body {
+  padding-left: initial;
+}
+
+/* mission/vision */
+.mission-container {
+  background: var(--color-dodger-deep);
+  padding: 1rem 2rem;
+}
+
+.mission-container .section-title {
+  font-size: var(--title-md);
+}
+
+.mission-container p {
+  /* padding-right: 1rem; */
+  text-align: justify;
 }
 
 .footer {
@@ -679,6 +703,9 @@ body {
   }
   .statement-img {
     order: 1;
+  }
+  .deputy-statement {
+    gap: 1.5rem;
   }
 }
 
