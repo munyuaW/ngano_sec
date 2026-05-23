@@ -485,8 +485,11 @@ body {
 }
 
 .statement-img {
-  border-radius: var(--radius-sm);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .statement-img img {
