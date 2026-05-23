@@ -15,7 +15,7 @@
   --color-navy: #0d1b3a;
   --color-navy-soft: #152a52;
   --color-surface: #f4f7fb;
-  --color-surface-card: #ffffff;
+  --color-surface-alt: #ffffff;
   --color-text: #1a2744;
   --color-text-muted: #4a5d7a;
   --color-border: rgba(30, 144, 255, 0.22);
@@ -23,9 +23,12 @@
   --shadow-md: 0 24px rgba(13, 27, 58, 0.1);
 
   --header-height: 3rem;
-  --sidebar-width: 17.5rem;
+  --sidebar-width: 16.5rem;
   --sidebar-minimized-width: 5rem;
-  --max-container-width: 960px;
+  --max-site-width: 1600px;
+  --max-main-content-container-width: calc(
+    var(--max-site-width) - var(--sidebar-width)
+  );
 
   --radius-sm: 5px;
   --radius-md: 10px;
@@ -56,12 +59,18 @@ body {
   font-size: 1rem;
   line-height: 1.55;
   color: var(--color-text);
-  background: linear-gradient(180deg, #e8f2fc 0%, var(--color-surface) 32%);
+  background: linear-gradient(180deg, #e8f2fc 0%, #d2e6f9 32%);
   font-family:
     "Source Sans 3",
     system-ui,
     -apple-system,
     sans-serif;
+}
+
+.site-wrapper {
+  width: 100%;
+  max-width: var(--max-site-width);
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
@@ -71,15 +80,6 @@ body {
     "sidebar hero"
     "sidebar content"
     "sidebar footer";
-}
-
-/* Reusable css classes */
-.container {
-  max-width: var(--max-container-width);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
 }
 
 .mobile-overlay {
@@ -413,24 +413,31 @@ body {
 }
 
 .date {
-  color: var(--color-text);
+  color: var(--color-navy);
   margin-top: 2rem;
 }
 
 /* Main */
-.main-content {
+.main-content-wrapper {
   grid-area: content;
-  padding: 1.5rem 1.25rem 2.5rem;
-  min-width: 0;
+
+  width: 100%;
+  max-width: var(--max-site-width);
+  margin: 0 auto;
 }
 
-.main-container {
-  max-width: 960px;
-  margin: 2rem auto;
+.container {
+  max-width: var(--max-main-content-container-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+
+  padding: 3rem 2rem;
 }
 
-.welcome-msg {
-  min-height: 300px;
+.welcome-container {
+  background: var(--color-surface-alt);
 }
 
 .page-title {
@@ -450,35 +457,31 @@ body {
   margin-top: 0.5rem;
 }
 
-.page-description {
+.welcome-msg p {
   color: var(--color-text-muted);
+  margin-bottom: 1rem;
 }
 
 .welcome-img {
-  max-width: 500px;
+  max-width: 980px;
   max-height: 300px;
   overflow: hidden;
 }
 
 .welcome-img img {
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 3px;
   object-fit: cover;
   object-position: center;
 }
 
-.statement {
-  max-width: var(--max-container-width);
-  margin: 2rem 0;
+.statement-container {
   display: grid;
   grid-template-columns: minmax(200px, 250px) 1fr;
   gap: 1.5rem;
-  background: var(--color-surface-card);
-  padding: 1.5rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+
+  background: var(--color-surface);
 }
 
 .statement-img {
@@ -491,6 +494,11 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.statement-body {
+  padding: 0 2rem;
+  max-width: 800px;
 }
 
 .statement-body .role {
@@ -513,6 +521,7 @@ body {
 
 .quote p {
   font-size: 0.98rem;
+  margin-bottom: 0.5rem;
   line-height: 1.6;
 }
 
@@ -523,6 +532,10 @@ body {
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --sidebar-width: var(--sidebar-minimized-width);
+  }
+
   body {
     grid-template-columns: var(--sidebar-minimized-width) 1fr;
   }
@@ -586,7 +599,7 @@ body {
 
 /* Mobile devices */
 @media (max-width: 767px) {
-  body {
+  .site-wrapper {
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
@@ -597,6 +610,7 @@ body {
 
   .container {
     grid-template-columns: 1fr;
+    padding: 2rem 1rem;
   }
 
   /* sticky header on page scroll */
@@ -660,8 +674,17 @@ body {
   .statement {
     grid-template-columns: 1fr;
   }
+  .statement-body {
+    padding: 0;
+  }
   .statement-img {
     order: 1;
+  }
+}
+
+@media (max-width: 350px) {
+  .header-right .mobile-title {
+    font-size: 0.85rem;
   }
 }
 
