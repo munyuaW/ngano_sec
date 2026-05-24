@@ -528,15 +528,6 @@ body {
   line-height: 1.6;
 }
 
-.deputy-statement {
-  grid-template-columns: 1fr minmax(200px, 250px);
-  gap: unset;
-}
-
-.deputy-statement .statement-body {
-  padding-left: initial;
-}
-
 /* mission/vision */
 .mission-container {
   background: var(--color-dodger-deep);
@@ -548,8 +539,25 @@ body {
 }
 
 .mission-container p {
-  /* padding-right: 1rem; */
   text-align: justify;
+}
+
+.deputy-statement {
+  grid-template-columns: 1fr minmax(200px, 250px);
+  gap: unset;
+}
+
+.deputy-statement .statement-body {
+  padding-left: initial;
+}
+
+/* About */
+.about-container {
+  background: var(--color-surface);
+}
+
+.column p:not(p:last-of-type) {
+  margin-bottom: 1rem;
 }
 
 .footer {
