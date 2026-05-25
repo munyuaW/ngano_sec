@@ -538,12 +538,83 @@
 				</div>
 			</div>
 
-			<div class="container contact-container">
+			<div class="container contact-container" id="contact">
 				<div class="call-email">
 					<h2 class="section-title-lg">Contact Us</h2>
+					<!-- Phone,Email, Address -->
+					<div class="contact-info">
+						<div class="contact-item">
+							<i class="fa-solid fa-phone"></i>
+							<span>
+								<a href="tel:+254115080359" target="_self">
+									+254 115 080 359
+								</a>
+							</span>
+						</div>
+						<div class="contact-item">
+							<i class="fa-solid fa-envelope"></i>
+							<span>
+								<a href="mailto:nganosecondaryschool@gmail.com"
+									target="_blank">nganosecondaryschool@gmail.com
+								</a>
+							</span>
+						</div>
+						<div class="contact-item">
+							<i class="fa-solid fa-stamp"></i>
+							<span>P.O. Box 622-20300, Nyahururu</span>
+						</div>
+						<div class="bank-mpesa-details">
+							<h3 class="section-title-sm">
+								Bank &amp; Mpesa Details
+							</h3>
+							<p>
+								<span>
+									<strong>Bank:</strong> Equity Bank
+								</span>
+								<span>
+									<strong>Account Name:</strong> Ngano
+									Secondary School
+								</span>
+								<span>
+									<strong>Account Number:</strong> 1234567890
+								</span>
+								<span>
+									<strong>Mpesa Paybill:</strong> 123456
+								</span>
+								<span>
+									<strong>Mpesa Account:</strong> Ngano
+									Secondary School
+								</span>
+							</p>
+						</div>
+					</div>
 				</div>
+
 				<div class="feedback">
 					<h2 class="section-title-lg">Talk To Us</h2>
+					<!-- Feedback form -->
+					<form action="#" method="post" class="feedback-form">
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input type="text" id="name" name="name"
+								placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" id="email" name="email"
+								placeholder="Your Email" required>
+						</div>
+						<div class="form-group">
+							<label for="message">Message</label>
+							<textarea id="message" name="message"
+								placeholder="Your Message in not more than 200 characters"
+								maxlength="200" cols="30" rows="5"
+								required></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary">
+							Send Message
+						</button>
+					</form>
 				</div>
 			</div>
 		</main>

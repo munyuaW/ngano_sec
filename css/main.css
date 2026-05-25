@@ -725,6 +725,92 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.contact-container .section-title-lg {
+  color: var(--color-surface);
+}
+
+.call-email {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  background: rgba(21, 42, 82, 0.95);
+  color: var(--color-surface);
+  padding: 1rem 0.75rem;
+  border-radius: var(--radius-md);
+}
+
+.call-email .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.call-email a {
+  font-weight: 600;
+  color: var(--color-dodger);
+  font-size: 1.1rem;
+}
+
+.bank-mpesa-details {
+  padding-top: 1rem;
+}
+
+.bank-mpesa-details p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.feedback {
+  background: rgba(21, 42, 82, 0.95);
+  color: var(--color-surface);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feedback-form label {
+  display: block;
+  font-weight: 600;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  padding: 0.5rem;
+}
+
+.feedback-form textarea {
+  resize: none;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--color-dodger);
+  color: var(--color-surface);
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--color-dodger-deep);
+}
+
 .footer {
   grid-area: footer;
   background: var(--color-bg-footer);
