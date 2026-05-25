@@ -22,6 +22,7 @@
   --shadow-sm: 0 1px 3px rgba(13, 27, 58, 0.08);
   --shadow-md: 0 8px 24px rgba(13, 27, 58, 0.1);
   --highlight: rgba(21, 42, 82, 0.25);
+  --overlay: rgba(13, 27, 58, 0.6);
 
   --header-height: 3rem;
   --sidebar-width: 16.5rem;
@@ -134,7 +135,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay);
   z-index: 9;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -669,34 +670,59 @@ body {
   gap: 1.5rem;
 }
 
+.cbe-column .column-title {
+  font-size: var(--title-sm);
+  color: var(--color-navy);
+  font-family: var(--font-serif);
+}
+
 .cbe-column .card {
   background: var(--color-surface);
   padding: 0.5rem 0.9rem;
-  min-height: 350px;
+  height: 100%;
 }
 
 .subjects-list {
   list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .subjects-list li {
-  padding-bottom: 0.25rem;
+  background: var(--color-dodger-deep);
+  color: #e8f2fc;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
 }
 
 .cbe-column .card p {
+  flex-grow: 1;
+  font-size: 0.9rem;
   color: var(--color-text-muted);
   font-style: italic;
-  text-align: center;
-  font-size: 0.85rem;
-  margin: auto 0 0.25rem;
+  padding: 0.5rem 0;
 }
 
 .cbe-column .card a {
   margin-top: auto;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .cbe-column [aria-hidden="true"] {
   visibility: hidden;
+}
+
+.contact-container {
+  background: rgba(255, 255, 255, 0.2);
+  background-image:
+    linear-gradient(var(--overlay), var(--overlay)),
+    url(../images/background/cont_banner2.jpg);
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(10px);
 }
 
 .footer {
