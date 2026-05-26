@@ -1,0 +1,59 @@
+.hero-container {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 27, 58, 0.85);
+}
+
+.hero-container .hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+article:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.departments-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.col-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.title h5 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  color: #555;
+}
+
+.col-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
