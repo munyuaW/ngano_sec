@@ -808,6 +808,28 @@ body {
   background: var(--color-dodger-deep);
 }
 
+.main .location {
+  background: var(--color-surface);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.main .location .section-title-lg {
+  color: var(--color-navy);
+  align-self: flex-start;
+}
+
+.main .location iframe {
+  width: 100%;
+  max-width: 980px;
+  height: 450px;
+  border: none;
+  border-radius: var(--radius-md);
+}
+
 .footer {
   grid-area: footer;
   background: var(--color-bg-footer);
