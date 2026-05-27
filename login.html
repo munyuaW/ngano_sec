@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ngano Secondary and Senior School -- In Pursuit of Excellence">
+    <meta name="author" content="Munyua">
+    <title>PORTAL | Ngano Secondary</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/logo/logo_50x52.jpg">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body class="login-page">
+    <div class="login-layout">
+        <header class="header login-header">
+            <div class="header-left">
+                <img src="images/logo/logo.jpg" alt="">
+                <h1>Ngano Secondary &amp; Senior School
+                </h1>
+            </div>
+            <div class="header-right">
+                <a class="login-back-link" href="index.html">← Back to home</a>
+            </div>
+        </header>
+        <main class="login-main" id="main">
+            <div class="login-wrapper">
+                <div class="login-card">
+                    <p class="login-badge" id="portalBadge">Portal</p>
+                    <h1 class="login-title" id="portalTitle">Portal sign in</h1>
+                    <p class="login-description" id="portalDescription">
+                        Sign in to access your dashboard.
+                    </p>
+
+                    <form class="login-form" id="portalLoginForm" action="#"
+                        method="post" novalidate>
+                        <input type="hidden" name="portal" id="portalField"
+                            value="students" />
+
+                        <div class="form-field">
+                            <label class="form-label" for="username"
+                                id="usernameLabel">Username</label>
+                            <input class="form-input" type="text" id="username"
+                                name="username" autocomplete="username" required
+                                placeholder="" />
+                            <p class="form-hint" id="usernameHint"></p>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label"
+                                for="password">Password</label>
+                            <div class="form-input-wrap">
+                                <input class="form-input" type="password"
+                                    id="password" name="password"
+                                    autocomplete="current-password" required
+                                    minlength="8"
+                                    placeholder="Enter your password" />
+                                <button type="button"
+                                    class="form-toggle-password"
+                                    id="togglePassword"
+                                    aria-label="Show password"
+                                    aria-pressed="false">
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-row form-row--between">
+                            <label class="form-checkbox">
+                                <input type="checkbox" name="remember"
+                                    id="remember" />
+                                <span>Remember me on this device</span>
+                            </label>
+                            <a href="#" class="form-link">Forgot password?</a>
+                        </div>
+
+                        <p class="form-message" id="formMessage" role="status"
+                            aria-live="polite" hidden></p>
+
+                        <button type="submit" class="btn btn--primary"
+                            id="submitBtn">
+                            Sign in to dashboard
+                        </button>
+                    </form>
+
+                    <p class="login-switch-label">Sign in to a different portal
+                    </p>
+                    <nav class="login-portal-nav" id="portalNav"
+                        aria-label="Other portals">
+                        <a href="login.html?portal=students" class="is-current"
+                            id="students">Students</a>
+                        <a href="login.html?portal=staff" id="staff">Staff</a>
+                        <a href="login.html?portal=alumni"
+                            id="alumni">Alumni</a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
