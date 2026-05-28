@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".year").textContent = new Date().getFullYear();
   const menuToggle = document.getElementById("menuToggle");
   const sidebar = document.getElementById("sideBar");
   const mobileOverlay = document.getElementById("mobileOverlay");
