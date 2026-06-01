@@ -10,6 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".hero-slide");
   const dotsContainer = document.getElementById("heroDots");
 
+  const feedbackForm = document.getElementById("feedbackForm");
+  const modal = document.querySelector("dialog");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  feedbackForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    modal.showModal();
+  });
+
+  closeModalBtn.addEventListener("click", () => modal.close());
+
   // Hero slides show
   generateDots();
   const dots = document.querySelectorAll(".hero-dot");
