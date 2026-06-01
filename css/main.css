@@ -862,6 +862,10 @@ body {
   background: var(--color-dodger-deep);
 }
 
+.feedback-form .form-field:valid {
+  border-color: green;
+}
+
 /* Thankyou Modal */
 dialog {
   margin: auto;
@@ -875,7 +879,7 @@ dialog {
   /* Base hidden state */
   opacity: 0;
 
-  transition-property: translate, opacity, display;
+  transition-property: translate, opacity, display, overlay;
   transition-duration: 1s;
   transition-behavior: allow-discrete;
 }
@@ -905,11 +909,12 @@ dialog::backdrop {
     var(--color-navy),
     var(--color-navy-soft)
   );
-  opacity: 0.7;
+  opacity: 0;
+
   /* Smoothly fades out the backdrop on close */
-  transition:
-    opacity 1s,
-    display 1s allow-discrete;
+  transition-property: opacity, display, overlay;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
 }
 
 /* Ensure backdrop starts at 0 opacity when opening */
@@ -1174,9 +1179,6 @@ dialog[open]::backdrop {
   .footer {
     flex-direction: column;
     gap: 1rem;
-  }
-  dialog[open] {
-    margin-inline: 0.5rem;
   }
 }
 
