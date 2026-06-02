@@ -13,10 +13,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const feedbackForm = document.getElementById("feedbackForm");
   const modal = document.querySelector("dialog");
   const closeModalBtn = document.getElementById("closeModalBtn");
-  feedbackForm.addEventListener("submit", (e) => {
+  const form = document.querySelector("#contactForm");
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    modal.showModal();
+    // 1. Gather all form inputs instantly
+    const formData = new FormData(form);
+
+    try {
+      // 2. Send the data to the third-party email API
+      const response = await fetch("https://web3forms.com", {
+        method: "POST",
+        body: formData, // The service automatically reads your form fields
+      });
+
+      if (response.ok) {
+        alert("Message sent successfully to the school email!");
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   });
 
   closeModalBtn.addEventListener("click", () => modal.close());
