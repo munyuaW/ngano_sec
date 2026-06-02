@@ -934,11 +934,12 @@ dialog[open]::backdrop {
   right: 0;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-dodger);
+  color: rgb(246, 62, 62);
   cursor: pointer;
 }
 
 .thankyou-msg h1 {
+  padding-top: 0.5rem;
   color: var(--color-dodger-deep);
   text-align: center;
 }
