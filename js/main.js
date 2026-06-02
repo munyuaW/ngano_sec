@@ -13,32 +13,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const feedbackForm = document.getElementById("feedbackForm");
   const modal = document.querySelector("dialog");
   const closeModalBtn = document.getElementById("closeModalBtn");
-  const form = document.querySelector("#contactForm");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  // Handle form data using third-party email API
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    // 1. Gather all form inputs instantly
-    const formData = new FormData(form);
+      // 1. Gather all form inputs instantly
+      const formData = new FormData(feedbackForm);
 
-    try {
-      // 2. Send the data to the third-party email API
-      const response = await fetch("https://web3forms.com", {
-        method: "POST",
-        body: formData, // The service automatically reads your form fields
-      });
+      try {
+        // 2. Send the data to the third-party email API
+        const response = await fetch(feedbackForm.action, {
+          method: "POST",
+          body: formData,
+        });
 
-      if (response.ok) {
-        alert("Message sent successfully to the school email!");
-        form.reset();
-      } else {
-        alert("Something went wrong. Please try again.");
+        if (response.ok) {
+          modal.showModal();
+          feedbackForm.reset();
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  });
-
+    });
+  }
   closeModalBtn.addEventListener("click", () => modal.close());
 
   // Hero slides show
