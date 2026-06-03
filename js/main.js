@@ -1,66 +1,134 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".year").textContent = new Date().getFullYear();
+
+  /* ______________________HomePage-Specific Logic___________________ */
+  if (document.body.id === "homePage") {
+    // Hero slides show
+    const slides = document.querySelectorAll(".hero-slide");
+    const dotsContainer = document.getElementById("heroDots");
+
+    generateDots();
+    const dots = document.querySelectorAll(".hero-dot");
+
+    let currentSlideIndex = 0;
+    let timerId = null;
+    const INTERVAL_MS = 5000;
+
+    startAutoplay();
+
+    function generateDots() {
+      if (!slides || !dotsContainer) return;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = `hero-dot ${i === 0 ? "is-active" : ""}`;
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-selected", `${i === 0 ? "true" : "false"}`);
+        dot.setAttribute("aria-label", `Show slide ${i + 1}`);
+        dot.addEventListener("click", () => {
+          goTo(i);
+          resetAutoplay();
+        });
+
+        dotsContainer.append(dot);
+      });
+    }
+
+    function goTo(index) {
+      if (index < 0 || index >= slides.length) return;
+
+      slides[currentSlideIndex].classList.remove("is-active");
+      dots[currentSlideIndex].classList.remove("is-active");
+      dots[currentSlideIndex].setAttribute("aria-selected", "false");
+
+      currentSlideIndex = index;
+
+      slides[currentSlideIndex].classList.add("is-active");
+      dots[currentSlideIndex].classList.add("is-active");
+      dots[currentSlideIndex].setAttribute("aria-selected", "true");
+    }
+
+    function startAutoplay() {
+      timerId = setInterval(next, INTERVAL_MS);
+    }
+
+    function next() {
+      goTo((currentSlideIndex + 1) % slides.length);
+    }
+
+    function stopAutoplay() {
+      clearInterval(timerId);
+    }
+
+    function resetAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    /* __________________________________________________________________ */
+    // Handle form data using third-party email API and show thankyou modal
+    const feedbackForm = document.getElementById("feedbackForm");
+    const modal = document.querySelector("dialog");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    if (feedbackForm) {
+      feedbackForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // 1. Gather all form inputs instantly
+        const formData = new FormData(feedbackForm);
+
+        try {
+          // 2. Send the data to the third-party email API
+          const response = await fetch(feedbackForm.action, {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            modal.showModal();
+            feedbackForm.reset();
+          } else {
+            alert("Something went wrong. Please try again.");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
+    }
+    closeModalBtn.addEventListener("click", () => modal.close());
+  }
+  // End home-page-specific logic
+
+  /* __________________________________________________________________ */
+  // The Sidebar
   const menuToggle = document.getElementById("menuToggle");
   const sidebar = document.getElementById("sideBar");
+  const navLinks = document.querySelectorAll(".nav-link");
   const mobileOverlay = document.getElementById("mobileOverlay");
   const menuIcon = menuToggle.querySelector("i");
   const collapsibleMenuBtns = document.querySelectorAll(".nav-group > button");
   const mobileQuery = window.matchMedia("(max-width: 767px)");
-
-  const slides = document.querySelectorAll(".hero-slide");
-  const dotsContainer = document.getElementById("heroDots");
-
-  const feedbackForm = document.getElementById("feedbackForm");
-  const modal = document.querySelector("dialog");
-  const closeModalBtn = document.getElementById("closeModalBtn");
-
-  // Handle form data using third-party email API
-  if (feedbackForm) {
-    feedbackForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      // 1. Gather all form inputs instantly
-      const formData = new FormData(feedbackForm);
-
-      try {
-        // 2. Send the data to the third-party email API
-        const response = await fetch(feedbackForm.action, {
-          method: "POST",
-          body: formData,
-        });
-
-        if (response.ok) {
-          modal.showModal();
-          feedbackForm.reset();
-        } else {
-          alert("Something went wrong. Please try again.");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    });
-  }
-  closeModalBtn.addEventListener("click", () => modal.close());
-
-  // Hero slides show
-  generateDots();
-  const dots = document.querySelectorAll(".hero-dot");
-
-  let currentSlideIndex = 0;
-  let timerId = null;
-  const INTERVAL_MS = 5000;
-
-  startAutoplay();
 
   collapsibleMenuBtns.forEach((btn) =>
     btn.addEventListener("click", handleNavGroupClick),
   );
 
   resetNavPanels();
+
   mobileQuery.addEventListener("change", resetNavPanels);
 
   menuToggle.addEventListener("click", toggleSidebar);
+
   mobileOverlay.addEventListener("click", toggleSidebar);
+
+  navLinks.forEach((link) =>
+    link.addEventListener("click", () => {
+      navLinks.forEach((l) => l.classList.remove("active"));
+      link.classList.add("active");
+      if (mobileQuery.matches) toggleSidebar();
+    }),
+  );
 
   function toggleSidebar() {
     sidebar.classList.toggle("open");
@@ -96,56 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menuIcon.classList.add("fa-bars");
       menuIcon.classList.remove("fa-times");
     }
-  }
-
-  function generateDots() {
-    if (!slides || !dotsContainer) return;
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = `hero-dot ${i === 0 ? "is-active" : ""}`;
-      dot.setAttribute("role", "tab");
-      dot.setAttribute("aria-selected", `${i === 0 ? "true" : "false"}`);
-      dot.setAttribute("aria-label", `Show slide ${i + 1}`);
-      dot.addEventListener("click", () => {
-        goTo(i);
-        resetAutoplay();
-      });
-
-      dotsContainer.append(dot);
-    });
-  }
-
-  function goTo(index) {
-    if (index < 0 || index >= slides.length) return;
-
-    slides[currentSlideIndex].classList.remove("is-active");
-    dots[currentSlideIndex].classList.remove("is-active");
-    dots[currentSlideIndex].setAttribute("aria-selected", "false");
-
-    currentSlideIndex = index;
-
-    slides[currentSlideIndex].classList.add("is-active");
-    dots[currentSlideIndex].classList.add("is-active");
-    dots[currentSlideIndex].setAttribute("aria-selected", "true");
-  }
-
-  function startAutoplay() {
-    timerId = setInterval(next, INTERVAL_MS);
-  }
-
-  function next() {
-    goTo((currentSlideIndex + 1) % slides.length);
-  }
-
-  function stopAutoplay() {
-    clearInterval(timerId);
-  }
-
-  function resetAutoplay() {
-    stopAutoplay();
-    startAutoplay();
   }
 });
 

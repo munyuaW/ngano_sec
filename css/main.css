@@ -69,11 +69,6 @@ body {
   line-height: 1.55;
   color: var(--color-text);
   background: linear-gradient(180deg, #e8f2fc 0%, #d2e6f9 32%);
-  font-family:
-    "Source Sans 3",
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 /* Reusable CSS Classes */
@@ -1109,7 +1104,7 @@ dialog[open]::backdrop {
 
   .sidebar {
     position: fixed;
-    left: 100%;
+    left: -100%;
     top: 0;
     width: var(--sidebar-width);
     height: 100vh;
