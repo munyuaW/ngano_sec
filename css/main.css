@@ -973,6 +973,53 @@ dialog[open]::backdrop {
   border-radius: var(--radius-md);
 }
 
+/* Testimonials */
+.testimonial-container {
+  background: var(--color-surface-alt);
+}
+
+.testimonial-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card.testimonial-card {
+  background: linear-gradient(
+    135deg,
+    var(--color-dodger),
+    var(--color-dodger-deep),
+    var(--color-navy-soft)
+  );
+  padding: 1rem;
+  gap: 1rem;
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-profile .name {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-profile p {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
 .footer {
   grid-area: footer;
   background: var(--color-dodger-deep);
@@ -1178,7 +1225,7 @@ dialog[open]::backdrop {
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 360px) {
   .header-right .mobile-title {
     font-size: 0.85rem;
   }
