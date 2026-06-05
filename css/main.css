@@ -1020,6 +1020,12 @@ dialog[open]::backdrop {
   border-radius: 50%;
 }
 
+/* Gallery */
+.container.gallery-container {
+  background: var(--color-surface);
+  grid-template-columns: 1fr;
+}
+
 .footer {
   grid-area: footer;
   background: var(--color-dodger-deep);
