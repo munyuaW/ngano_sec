@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentSlideIndex = 0;
     let timerId = null;
-    const INTERVAL_MS = 5000;
+    const INTERVAL_MS = 7000;
 
     startAutoplay();
 
@@ -97,6 +97,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
     closeModalBtn.addEventListener("click", () => modal.close());
+
+    /* __________________________________________________________________ */
+    // Gallery slides and lightbox functionality
+    const thumbnails = document.querySelectorAll(".gallery-thumbnail");
+    const lightbox = document.querySelector(".gallery-lightbox");
+    const lightboxCloseBtn = document.getElementById("closeLightboxBtn");
+
+    // banner animation
+    const thumbnailTrack = document.getElementById("bannerTrack");
+    const items = Array.from(thumbnailTrack.children);
+    items.forEach((item) => {
+      const clone = item.cloneNode(true);
+      thumbnailTrack.appendChild(clone);
+    });
   }
   // End home-page-specific logic
 

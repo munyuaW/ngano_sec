@@ -213,7 +213,7 @@ body {
   margin: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1.1s ease-in-out;
+  transition: opacity 1.5s ease-in-out;
 }
 
 .hero-slide.is-active {
@@ -263,7 +263,7 @@ body {
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.65);
   background: transparent;
-  transition: background 0.3s ease;
+  transition: background 1s ease;
   cursor: pointer;
 }
 
@@ -460,6 +460,7 @@ body {
   width: 100%;
   max-width: var(--max-site-width);
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .welcome-container {
@@ -1021,9 +1022,69 @@ dialog[open]::backdrop {
 }
 
 /* Gallery */
-.container.gallery-container {
+.banner-container {
   background: var(--color-surface);
-  grid-template-columns: 1fr;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  display: flex;
+}
+
+.banner-track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: scroll-left 150s linear infinite;
+}
+
+.thumbnail {
+  width: 25vw;
+  height: 20vh;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-container:hover .banner-track {
+  animation-play-state: paused;
+}
+
+/* banner animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - (10px / 2)));
+  }
+}
+
+.gallery-lightbox {
+  display: none;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.gallery-lightbox #closeLightboxBtn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
 }
 
 .footer {
@@ -1223,6 +1284,11 @@ dialog[open]::backdrop {
 
   .cbe-column [aria-hidden="true"] {
     display: none;
+  }
+
+  .thumbnail {
+    width: 45vw;
+    height: 30vw;
   }
 
   .footer {
