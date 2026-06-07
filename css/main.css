@@ -1038,8 +1038,8 @@ dialog[open]::backdrop {
 }
 
 .thumbnail {
-  width: 25vw;
-  height: 20vh;
+  width: 140px;
+  height: 90px;
   flex-shrink: 0;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
@@ -1284,11 +1284,6 @@ dialog[open]::backdrop {
 
   .cbe-column [aria-hidden="true"] {
     display: none;
-  }
-
-  .thumbnail {
-    width: 45vw;
-    height: 30vw;
   }
 
   .footer {
