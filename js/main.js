@@ -140,11 +140,43 @@ document.addEventListener("DOMContentLoaded", () => {
       lightboxCaption.textContent = galleryDataArr[index].caption;
     }
 
+    function navigateLightBox(direction) {
+      if (!lightbox.classList.contains("active")) return;
+
+      if (direction === "next") {
+        activeIndex = (activeIndex + 1) % galleryDataArr.length;
+      } else {
+        activeIndex =
+          (activeIndex - 1 + galleryDataArr.length) % galleryDataArr.length;
+      }
+
+      updateLightBoxView(activeIndex);
+    }
+
+    // arrow keys navigation
+    window.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("active")) return;
+
+      switch (e.key) {
+        case "Escape":
+          closeLightBox();
+          break;
+        case "ArrowRight":
+          navigateLightBox("next");
+          break;
+        case "ArrowLeft":
+          navigateLightBox("prev");
+          break;
+      }
+    });
+
     // close lightbox
     function closeLightBox() {
       lightbox.classList.remove("active");
       lightbox.classList.remove("loading");
       lightboxImg.classList.remove("loaded");
+
+      setTimeout(() => (lightboxCaption.textContent = ""), 300);
     }
 
     // Image event callback clears states when browser paints media
@@ -165,6 +197,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     lightboxCloseBtn.addEventListener("click", closeLightBox);
+    nextBtn.addEventListener("click", () => {
+      navigateLightBox("next");
+    });
+    prevBtn.addEventListener("click", () => {
+      navigateLightBox("prev");
+    });
   }
   // End home-page-specific logic
 

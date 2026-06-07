@@ -1059,9 +1059,11 @@ dialog[open]::backdrop {
   display: block;
 }
 
-.banner-container:hover .banner-track {
-  animation-play-state: paused;
-  cursor: pointer;
+@media (hover: hover) {
+  .banner-container:hover .banner-track {
+    animation-play-state: paused;
+    cursor: pointer;
+  }
 }
 
 /* banner animation */
