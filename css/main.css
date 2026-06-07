@@ -1044,6 +1044,11 @@ dialog[open]::backdrop {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.03);
 }
 
 .thumbnail img {
@@ -1055,6 +1060,7 @@ dialog[open]::backdrop {
 
 .banner-container:hover .banner-track {
   animation-play-state: paused;
+  cursor: pointer;
 }
 
 /* banner animation */
@@ -1067,23 +1073,138 @@ dialog[open]::backdrop {
   }
 }
 
-.gallery-lightbox {
-  display: none;
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  touch-action: none;
+  z-index: 999;
 }
 
-.lightbox-img {
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-media-wrapper {
+  position: relative;
   max-width: 90%;
-  max-height: 90%;
+  max-height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.gallery-lightbox #closeLightboxBtn {
+.lightbox-content {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  transform: scale(0.9);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+  opacity: 0; /* Hidden initially until full render loads */
+}
+
+.lightbox.active .lightbox-content.loaded {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.lightbox-caption {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 15px;
+  text-align: center;
+  max-width: 80%;
+  font-weight: 300;
+  letter-spacing: 0.25rem;
+  transform: translateY(10px);
+  opacity: 0;
+  transition:
+    transform 0.3s ease 0.1s,
+    opacity 0.3s ease 0.1s;
+}
+
+.lightbox.active .lightbox-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* The loading spinner */
+.spinner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+  z-index: 1000;
+}
+
+.lightbox.loading .spinner {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lightbox-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+#next {
+  right: 15px;
+}
+#prev {
+  left: 15px;
+}
+
+.lightbox-nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+
+.lightbox-close {
   position: absolute;
   top: 20px;
-  right: 10px;
-  background: none;
-  border: none;
+  right: 30px;
   color: white;
   font-size: 3rem;
+  user-select: none;
   cursor: pointer;
 }
 
@@ -1284,6 +1405,17 @@ dialog[open]::backdrop {
 
   .cbe-column [aria-hidden="true"] {
     display: none;
+  }
+
+  #next {
+    right: 8px;
+  }
+  #prev {
+    left: 8px;
+  }
+
+  .lightbox-caption {
+    max-width: 90%;
   }
 
   .footer {

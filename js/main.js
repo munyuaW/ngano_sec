@@ -100,17 +100,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* __________________________________________________________________ */
     // Gallery slides and lightbox functionality
-    const thumbnails = document.querySelectorAll(".gallery-thumbnail");
-    const lightbox = document.querySelector(".gallery-lightbox");
-    const lightboxCloseBtn = document.getElementById("closeLightboxBtn");
-
-    // banner animation
     const thumbnailTrack = document.getElementById("bannerTrack");
-    const items = Array.from(thumbnailTrack.children);
-    items.forEach((item) => {
+    const lightbox = document.querySelector(".lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+    const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+
+    // get the initial gallery items
+    const initialItems = Array.from(thumbnailTrack.children);
+
+    // capture initial items metadata
+    const galleryDataArr = initialItems.map((item) => {
+      const img = item.querySelector("img");
+      return {
+        src: img.src,
+        caption: img.getAttribute("alt") || "",
+      };
+    });
+
+    // clone the track items for seamless loop setup
+    initialItems.forEach((item) => {
       const clone = item.cloneNode(true);
       thumbnailTrack.appendChild(clone);
     });
+
+    // Track the current lightbox item index
+    let activeIndex = 0;
+
+    // update lightbox item by index
+    function updateLightBoxView(index) {
+      // reset the view
+      lightbox.classList.add("loading");
+      lightboxImg.classList.remove("loaded");
+
+      // rebind source parameters
+      lightboxImg.src = galleryDataArr[index].src;
+      lightboxCaption.textContent = galleryDataArr[index].caption;
+    }
+
+    // close lightbox
+    function closeLightBox() {
+      lightbox.classList.remove("active");
+      lightbox.classList.remove("loading");
+      lightboxImg.classList.remove("loaded");
+    }
+
+    // Image event callback clears states when browser paints media
+    lightboxImg.onload = () => {
+      lightbox.classList.remove("loading");
+      lightboxImg.classList.add("loaded");
+    };
+
+    thumbnailTrack.addEventListener("click", (e) => {
+      const clickedThumb = e.target.closest(".thumbnail");
+
+      if (!clickedThumb) return;
+      const targetSrc = clickedThumb.querySelector("img").src;
+
+      activeIndex = galleryDataArr.findIndex((item) => item.src === targetSrc);
+      updateLightBoxView(activeIndex);
+      lightbox.classList.add("active");
+    });
+
+    lightboxCloseBtn.addEventListener("click", closeLightBox);
   }
   // End home-page-specific logic
 
