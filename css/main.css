@@ -770,7 +770,7 @@ body {
   background: rgba(255, 255, 255, 0.2);
   background-image:
     linear-gradient(var(--overlay), var(--overlay)),
-    url(../images/background/cont_banner2.jpg);
+    url(../images/background/cont_banner2.webp);
   background-position: center;
   background-size: cover;
   backdrop-filter: blur(10px);
