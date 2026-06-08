@@ -1211,6 +1211,29 @@ dialog[open]::backdrop {
   cursor: pointer;
 }
 
+.back-to-top {
+  background: #00ffff;
+  border: none;
+  padding: 0.5rem 0.25rem;
+  border-radius: var(--radius-sm);
+  position: fixed;
+  bottom: 60px;
+  right: 5px;
+  cursor: pointer;
+  opacity: 0;
+  display: none;
+  transition:
+    opacity 0.3s ease,
+    display 0.3s ease allow-discrete;
+}
+
+.back-to-top i {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Footer */
 .footer {
   grid-area: footer;
   background: var(--color-dodger-deep);

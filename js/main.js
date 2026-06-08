@@ -203,6 +203,24 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", () => {
       navigateLightBox("prev");
     });
+
+    // Back to top btn
+    const backToTop = document.querySelector(".back-to-top");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 800) {
+        backToTop.style.opacity = 1;
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.opacity = 0;
+        backToTop.style.display = "none";
+      }
+    });
+    backToTop.addEventListener("click", () =>
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      }),
+    );
   }
   // End home-page-specific logic
 
