@@ -67,6 +67,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* __________________________________________________________________ */
+    // Intersection Observer for main content fade-in effect
+    const mainDivs = document.querySelectorAll(
+      ".main > div:not(div.testimonial-container)",
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      },
+    );
+    mainDivs.forEach((div) => observer.observe(div));
+
+    const cards = document.querySelectorAll(".testimonial-card");
+    const observeCards = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("rotate");
+        }
+      });
+    });
+    cards.forEach((card) => observeCards.observe(card));
+
+    /* __________________________________________________________________ */
     // Handle form data using third-party email API and show thankyou modal
     const feedbackForm = document.getElementById("feedbackForm");
     const modal = document.querySelector("dialog");
