@@ -14,7 +14,7 @@
   --color-darkblue: #00008b;
   --color-navy: #0d1b3a;
   --color-navy-soft: #152a52;
-  --color-surface: #f4f7fb;
+  --color-surface: #d2f0fb;
   --color-surface-alt: #ffffff;
   --color-text: #1a2744;
   --color-text-muted: #4a5d7a;
@@ -74,12 +74,14 @@ body {
 /* Reusable CSS Classes */
 .container {
   max-width: var(--max-main-content-container-width);
-  margin: 0 auto;
+  margin: 1rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 
   padding: 3rem 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .section-title-lg {
@@ -457,10 +459,12 @@ body {
 /* Main */
 .main-content-wrapper {
   grid-area: content;
+  background: var(--color-surface-alt);
 
   width: 100%;
   max-width: var(--max-site-width);
   margin: 0 auto;
+  padding: 1rem;
   overflow-x: hidden;
 }
 
@@ -578,6 +582,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 3rem 2rem;
+  border-radius: var(--radius-md);
 }
 
 .cards-grid {
@@ -766,6 +771,7 @@ body {
   background: rgba(13, 27, 58, 0.09);
 }
 
+/* Contact */
 .contact-container {
   background: rgba(255, 255, 255, 0.2);
   background-image:
@@ -960,6 +966,7 @@ dialog[open]::backdrop {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  border-radius: var(--radius-md);
 }
 
 .main .location .section-title-lg {
@@ -1037,6 +1044,7 @@ dialog[open]::backdrop {
 /* Gallery */
 .banner-container {
   background: var(--color-surface);
+  border-radius: var(--radius-md);
   width: 100%;
   overflow: hidden;
   padding: 2rem 0;
@@ -1475,6 +1483,9 @@ dialog[open]::backdrop {
     font-size: 0.85rem;
   }
 
+  .main-content-wrapper {
+    padding-inline: 0.25rem;
+  }
   .main .location iframe {
     max-width: 300px;
   }
@@ -1484,7 +1495,7 @@ dialog[open]::backdrop {
   }
   .call-email,
   .feedback {
-    padding-inline: 0.5rem;
+    padding-inline: 0.15rem;
   }
   .testimonial-container {
     padding-inline: 0.5rem;
