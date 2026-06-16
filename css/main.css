@@ -113,7 +113,6 @@ body {
   width: 100%;
   max-width: var(--max-site-width);
   margin: 0 auto;
-  position: relative;
 
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
@@ -1125,7 +1124,7 @@ dialog[open]::backdrop {
 }
 
 .lightbox {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -1139,7 +1138,7 @@ dialog[open]::backdrop {
   pointer-events: none;
   transition: opacity 0.3s ease;
   touch-action: none;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .lightbox.active {

@@ -1107,21 +1107,6 @@
 							alt="Stunning view of a section of our school compound">
 					</div>
 				</div>
-				<div class="lightbox" id="lightbox">
-					<button class="lightbox-nav-arrow arrow-right"
-						id="prev">❮</button>
-					<span class="lightbox-close"
-						id="lightboxCloseBtn">&times;</span>
-					<div class="lightbox-media-wrapper">
-						<div class="spinner"></div>
-						<img class="lightbox-content" id="lightboxImg" src=""
-							alt="Enlarged view" />
-					</div>
-					<div class="lightbox-caption" id="lightboxCaption">
-					</div>
-					<button class="lightbox-nav-arrow arrow-right"
-						id="next">❯</button>
-				</div>
 			</div>
 			<button type="button" class="back-to-top">
 				<i class="fa-solid fa-arrow-up"></i>
@@ -1141,6 +1126,20 @@
 			</p>
 		</footer>
 	</div>
+
+	<!-- Lightbox moved out of .banner-container to ensure it covers viewport -->
+	<div class="lightbox" id="lightbox">
+		<button class="lightbox-nav-arrow arrow-right" id="prev">❮</button>
+		<span class="lightbox-close" id="lightboxCloseBtn">&times;</span>
+		<div class="lightbox-media-wrapper">
+			<div class="spinner"></div>
+			<img class="lightbox-content" id="lightboxImg" src=""
+				alt="Enlarged view" />
+		</div>
+		<div class="lightbox-caption" id="lightboxCaption"></div>
+		<button class="lightbox-nav-arrow arrow-right" id="next">❯</button>
+	</div>
+
 	<script src="js/main.js"></script>
 </body>
 
