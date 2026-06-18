@@ -470,7 +470,7 @@ body {
 /* fade-in animation */
 .main > div:not(div.testimonial-container) {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(40px) scale(0.9);
   transition:
     opacity 1s ease,
     transform 1s ease;
@@ -478,7 +478,7 @@ body {
 
 .main > div:not(div.testimonial-container).visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .welcome-container {
