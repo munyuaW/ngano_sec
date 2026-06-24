@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         breakpoints: {
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          1024: { slidesPerView: 2.2 },
         },
         autoplay: { delay: 5000, disableOnInteraction: false },
         pagination: { el: ".swiper-pagination", clickable: true },
