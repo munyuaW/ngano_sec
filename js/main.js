@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* __________________________________________________________________ */
     // Intersection Observer for main content fade-in effect
     const mainDivs = document.querySelectorAll(
-      ".main > div:not(div.testimonial-container)",
+      ".main > div:not(div.testimonial-container)"
     );
     const observer = new IntersectionObserver(
       (entries) => {
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         threshold: 0.3,
-      },
+      }
     );
     mainDivs.forEach((div) => observer.observe(div));
 
@@ -94,6 +94,26 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
     cards.forEach((card) => observeCards.observe(card));
+
+    // swiper slider
+    function initSwiper() {
+      if (typeof Swiper === "undefined") return;
+      new Swiper(".testimonial-swiper", {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 20,
+        slidesPerView: 1,
+        breakpoints: {
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+      });
+    }
+
+    initSwiper();
 
     /* __________________________________________________________________ */
     // Handle form data using third-party email API and show thankyou modal
@@ -248,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
-      }),
+      })
     );
   }
   // End home-page-specific logic
@@ -264,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileQuery = window.matchMedia("(max-width: 767px)");
 
   collapsibleMenuBtns.forEach((btn) =>
-    btn.addEventListener("click", handleNavGroupClick),
+    btn.addEventListener("click", handleNavGroupClick)
   );
 
   resetNavPanels();
@@ -280,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navLinks.forEach((l) => l.classList.remove("active"));
       link.classList.add("active");
       if (mobileQuery.matches) toggleSidebar();
-    }),
+    })
   );
 
   function toggleSidebar() {
