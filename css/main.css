@@ -28,9 +28,7 @@
   --sidebar-width: 16.5rem;
   --sidebar-minimized-width: 5rem;
   --max-site-width: 1440px;
-  --max-main-content-container-width: calc(
-    var(--max-site-width) - var(--sidebar-width)
-  );
+  --max-main-content-container-width: calc(var(--max-site-width) - var(--sidebar-width));
 
   --radius-sm: 5px;
   --radius-md: 10px;
@@ -283,11 +281,9 @@ body {
   position: fixed;
   top: 0;
 
-  background: linear-gradient(
-    180deg,
-    var(--color-dodger-deep),
-    var(--color-dodger)
-  );
+  background: linear-gradient(180deg,
+      var(--color-dodger-deep),
+      var(--color-dodger));
   color: white;
   z-index: 99;
 }
@@ -365,7 +361,7 @@ body {
   border-left: 2px solid #00ffff;
 }
 
-.nav-disclosure > span {
+.nav-disclosure>span {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -401,14 +397,15 @@ body {
   background: rgba(21, 42, 82, 0.95);
   position: absolute;
   top: 0;
-  left: 100%; /* right of the parent*/
+  left: 100%;
+  /* right of the parent*/
   margin-left: 1rem;
   border-radius: 0 0.3rem 0.3rem 0;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* For mobile click event */
-.nav-group button[aria-expanded="true"] + .nav-list--nested {
+.nav-group button[aria-expanded="true"]+.nav-list--nested {
   display: block;
 }
 
@@ -464,11 +461,11 @@ body {
   max-width: var(--max-site-width);
   margin: 0 auto;
   padding: 1rem;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* fade-in animation */
-.main > div:not(div.testimonial-container) {
+.main>div:not(div.testimonial-container) {
   opacity: 0;
   transform: translateY(40px) scale(0.9);
   transition:
@@ -476,7 +473,7 @@ body {
     transform 1s ease;
 }
 
-.main > div:not(div.testimonial-container).visible {
+.main>div:not(div.testimonial-container).visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
@@ -631,11 +628,9 @@ body {
 }
 
 .card-badge {
-  background: linear-gradient(
-    135deg,
-    var(--color-darkblue),
-    var(--color-navy-soft)
-  );
+  background: linear-gradient(135deg,
+      var(--color-darkblue),
+      var(--color-navy-soft));
   color: #e8f2fc;
   font-size: 0.7rem;
   font-weight: 700;
@@ -903,28 +898,29 @@ dialog {
 /* Explicitly handles the exit animation path when closed */
 dialog:not([open]) {
   opacity: 0;
-  translate: 0 25vh; /* Falls down off the page */
+  translate: 0 25vh;
+  /* Falls down off the page */
 }
 
 dialog[open] {
-  translate: 0 0; /* Centers perfectly */
+  translate: 0 0;
+  /* Centers perfectly */
   opacity: 1;
 
   @starting-style {
     opacity: 0;
-    translate: 0 -25vh; /* Slides down from the top */
+    translate: 0 -25vh;
+    /* Slides down from the top */
   }
 }
 
 dialog::backdrop {
-  background-image: linear-gradient(
-    45deg,
-    var(--color-darkblue),
-    var(--color-dodger-deep),
-    var(--color-dodger),
-    var(--color-navy),
-    var(--color-navy-soft)
-  );
+  background-image: linear-gradient(45deg,
+      var(--color-darkblue),
+      var(--color-dodger-deep),
+      var(--color-dodger),
+      var(--color-navy),
+      var(--color-navy-soft));
   opacity: 0;
 
   /* Smoothly fades out the backdrop on close */
@@ -936,6 +932,7 @@ dialog::backdrop {
 /* Ensure backdrop starts at 0 opacity when opening */
 dialog[open]::backdrop {
   opacity: 0.7;
+
   @starting-style {
     opacity: 0;
   }
@@ -1013,12 +1010,10 @@ dialog[open]::backdrop {
 
 .testimonial-card {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    var(--color-navy-soft),
-    var(--color-dodger-deep),
-    var(--color-dodger)
-  );
+  background: linear-gradient(135deg,
+      var(--color-navy-soft),
+      var(--color-dodger-deep),
+      var(--color-dodger));
   padding: 1rem;
   gap: 1rem;
   border: none;
@@ -1126,6 +1121,7 @@ dialog[open]::backdrop {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-50% - (10px / 2)));
   }
@@ -1173,7 +1169,8 @@ dialog[open]::backdrop {
   transition:
     transform 0.3s ease,
     opacity 0.2s ease;
-  opacity: 0; /* Hidden initially until full render loads */
+  opacity: 0;
+  /* Hidden initially until full render loads */
 }
 
 .lightbox.active .lightbox-content.loaded {
@@ -1248,6 +1245,7 @@ dialog[open]::backdrop {
 #next {
   right: 15px;
 }
+
 #prev {
   left: 15px;
 }
@@ -1472,12 +1470,15 @@ dialog[open]::backdrop {
   .statement {
     grid-template-columns: 1fr;
   }
+
   .statement-body {
     padding: 0;
   }
+
   .statement-img {
     order: 1;
   }
+
   .deputy-statement {
     gap: 1.5rem;
   }
@@ -1485,6 +1486,7 @@ dialog[open]::backdrop {
   .events-wrapper {
     padding: 2rem 1rem;
   }
+
   .cards-grid {
     grid-template-columns: 1fr;
   }
@@ -1496,6 +1498,7 @@ dialog[open]::backdrop {
   #next {
     right: 8px;
   }
+
   #prev {
     left: 8px;
   }
@@ -1522,6 +1525,7 @@ dialog[open]::backdrop {
   .main-content-wrapper {
     padding-inline: 0.25rem;
   }
+
   .main .location iframe {
     max-width: 300px;
   }
@@ -1529,10 +1533,12 @@ dialog[open]::backdrop {
   .container.contact-container {
     padding-inline: 0;
   }
+
   .call-email,
   .feedback {
     padding-inline: 0.15rem;
   }
+
   .testimonial-container {
     padding-inline: 0.5rem;
   }
